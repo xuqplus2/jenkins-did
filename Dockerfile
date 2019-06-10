@@ -1,7 +1,7 @@
-FROM jenkins:2.60.3-alpine
+FROM jenkins/jenkins:2.180-alpine
 
 USER root
 
-RUN apk add docker --update && echo -e "chown jenkins:jenkins /var/run/docker.sock && su jenkins -c /usr/local/bin/jenkins.sh" > start.sh && chmod 705 start.sh
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk add docker --update && echo -e "chown jenkins:jenkins /var/run/docker.sock && su jenkins -c /usr/local/bin/jenkins.sh" > start.sh && chmod 705 start.sh
 
 ENTRYPOINT ["/bin/sh", "start.sh"]
