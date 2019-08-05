@@ -1,0 +1,1 @@
+docker run -itd --name jenkins -v jenkinsdata:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock --restart always xuqplus2/jenkins-did
